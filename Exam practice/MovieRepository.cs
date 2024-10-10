@@ -45,6 +45,7 @@ namespace Exam_practice
                     var movie = new Movie(reader.GetInt32(0), reader.GetString(1), reader.GetString(2), reader.GetDecimal(3));
                     Console.WriteLine(movie.ToString());
 
+
                 }
             }
         }
