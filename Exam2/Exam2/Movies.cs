@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Exam_practice
+namespace Exam2
 {
-    internal class repo
+    internal class Movies
     {
     }
 }

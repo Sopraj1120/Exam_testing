@@ -20,6 +20,17 @@ namespace Exam_practice
             Director = director;
             RentalPrice = rentalPrice;
         }
+        public Movie( string title, string director, decimal rentalPrice)
+        {
+            Title = title;
+            Director = director;
+            RentalPrice = rentalPrice;
+        }
+        public Movie()
+        {
+            
+        }
+
 
         public override string ToString()
         {

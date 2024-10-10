@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            MovieManager movieManager = new MovieManager();
+            
+            
+            MovieRepository repository = new MovieRepository();
             int option;
 
             do
@@ -25,14 +27,14 @@
                 switch (option)
                 {
                     case 1:
-                        AddMovie(movieManager); break;
+                        AddMovie(repository); break;
                     case 2:
-                        movieManager.GetAllMovies();
+                        repository.ViewMovies();
                         break;
                     case 3:
-                        UpdateMovie(movieManager); break;
+                        UpdateMovie(repository); break;
                     case 4:
-                        DeleteMovie(movieManager); break;
+                        DeleteMovie(repository); break;
                     case 5:
                         Console.WriteLine("Exit This System!..");
                         break;
@@ -41,10 +43,10 @@
             while (option != 5);
         }
 
-        static void AddMovie(MovieManager movieManager)
+        static void AddMovie(MovieRepository repository)
         {
-            Console.Write("Enter Movie Id: ");
-            int Id = int.Parse(Console.ReadLine());
+            //Console.Write("Enter Movie Id: ");
+            //int Id = int.Parse(Console.ReadLine());
 
             Console.Write("Enter Movie Title: ");
             string Title = Console.ReadLine();
@@ -52,13 +54,23 @@
             Console.Write("Enter Director: ");
             string Director = Console.ReadLine();
 
-            decimal rentalPrice = movieManager.ValidatePrice();
+           
+            
+          
+            
+                MovieManager movieManager = new MovieManager();
+                var rentalPrice = movieManager.ValidatePrice();
+            
+          
 
-            movieManager.CreateMovie(Id, Title, Director, rentalPrice);
+
+            //decimal rentalPrice = movieManager.ValidatePrice();
+
+            repository.AddMovie(new Movie(Title, Director, rentalPrice));
             Console.Clear();
         }
 
-        static void UpdateMovie(MovieManager movieManager)
+        static void UpdateMovie(MovieRepository repository)
         {
             Console.Write("Enter Movie New Id: ");
             int Id = int.Parse(Console.ReadLine());
@@ -69,18 +81,21 @@
             Console.Write("Enter New Director: ");
             string Director = Console.ReadLine();
 
-            decimal rentalPrice = movieManager.ValidatePrice();
+            //decimal rentalPrice = movieManager.ValidatePrice();
+            MovieManager movieManager = new MovieManager();
+            var rentalPrice = movieManager.ValidatePrice();
 
-            movieManager.UpdateMovie(Id, Title, Director, rentalPrice);
+            repository.updateMovie(new Movie(Title,Director,rentalPrice));
+
             Console.Clear();
         }
 
-        static void DeleteMovie(MovieManager movieManager)
+        static void DeleteMovie(MovieRepository repository)
         {
             Console.Write("Enter movie Id: ");
             int Id = int.Parse(Console.ReadLine());
 
-            movieManager.DeleteMovie(Id);
+            repository.DeleteMovie(Id);
             Console.Clear();
         }
     }
